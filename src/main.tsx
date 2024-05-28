@@ -5,9 +5,7 @@ import { Global } from "./GlobalStyles.ts";
 import { BrowserRouter } from "react-router-dom";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Global />
-      <App />
-    </BrowserRouter>
+    <Global />
+    <App />
   </React.StrictMode>
 );

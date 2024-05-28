@@ -12,6 +12,4 @@ html{
 }
 body{
     font-family: "League Spartan", sans-serif;
-}
-
-`;
+}`;
