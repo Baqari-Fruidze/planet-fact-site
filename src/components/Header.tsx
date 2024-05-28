@@ -19,19 +19,21 @@ export default function Header({
     <BurgerMain>
       <Head>
         <HOne>THE PLANETS</HOne>
-        <img src={burger} alt="" />
+        <img src={burger} alt="" onClick={() => setShow(!show)} />
       </Head>
-      <Planets>
-        {data.map((el) => (
-          <Planet>
-            <CircelAndPlanetNameCon>
-              <Circle name={el.name}></Circle>
-              <p>{el.name}</p>
-            </CircelAndPlanetNameCon>
-            {ArrowToHide ? <img src={arrowRight} alt="" /> : null}
-          </Planet>
-        ))}
-      </Planets>
+      {show ? (
+        <Planets>
+          {data.map((el) => (
+            <Planet name={el.name}>
+              <CircelAndPlanetNameCon>
+                <Circle name={el.name}></Circle>
+                <p>{el.name}</p>
+              </CircelAndPlanetNameCon>
+              {ArrowToHide ? <img src={arrowRight} alt="" /> : null}
+            </Planet>
+          ))}
+        </Planets>
+      ) : null}
     </BurgerMain>
   );
 }
@@ -74,17 +76,18 @@ const Circle = styled.div<{ name: string }>`
       ? "rgba(73, 126, 250, 1)"
       : "red"};
 `;
-const Planet = styled.div`
+const Planet = styled.div<{ name: string }>`
   padding: 2rem 0 2rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid grey;
+  border-bottom: ${(props) =>
+    props.name !== "Neptune" ? "1px solid grey" : null};
 `;
 const Planets = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2.4rem 0.8rem 0 0;
+  padding: 2.4rem 0.8rem 6rem 0;
 `;
 const HOne = styled.h1`
   color: #fff;
@@ -101,10 +104,9 @@ const Head = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1.7rem;
-  border-bottom: 1px solid gray;
 `;
 const BurgerMain = styled.div`
   width: 100%;
   background: rgba(7, 7, 36, 1);
-  padding: 1.6rem 2.4rem 6rem;
+  padding: 1.6rem 2.4rem 1.75rem;
 `;
