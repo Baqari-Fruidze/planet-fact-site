@@ -3,8 +3,18 @@ import arrowRight from "/assets/icon-chevron.svg";
 import burger from "/assets/icon-hamburger.svg";
 import source from "/assets/icon-source.svg";
 import styled from "styled-components";
+import data from "../data.json";
+import { Tdata } from "../Typed";
+import { useMediaQuery } from "@uidotdev/usehooks";
 
-export default function Header() {
+export default function Header({
+  show,
+  setShow,
+}: {
+  show: boolean;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  const ArrowToHide = useMediaQuery("only screen and (max-width : 48rem)");
   return (
     <BurgerMain>
       <Head>
@@ -12,13 +22,15 @@ export default function Header() {
         <img src={burger} alt="" />
       </Head>
       <Planets>
-        <Planet>
-          <CircelAndPlanetNameCon>
-            <Circle></Circle>
-            <p>MERCURY</p>
-          </CircelAndPlanetNameCon>
-          <img src={arrowRight} alt="" />
-        </Planet>
+        {data.map((el) => (
+          <Planet>
+            <CircelAndPlanetNameCon>
+              <Circle name={el.name}></Circle>
+              <p>{el.name}</p>
+            </CircelAndPlanetNameCon>
+            {ArrowToHide ? <img src={arrowRight} alt="" /> : null}
+          </Planet>
+        ))}
       </Planets>
     </BurgerMain>
   );
@@ -39,11 +51,28 @@ const CircelAndPlanetNameCon = styled.div`
     text-transform: uppercase;
   }
 `;
-const Circle = styled.div`
+const Circle = styled.div<{ name: string }>`
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background: rgba(222, 244, 252, 1);
+  background: ${({ name }) =>
+    name === "Mercury"
+      ? "rgba(222, 244, 252, 1)"
+      : name === "Venus"
+      ? "rgba(247, 204, 127, 1)"
+      : name === "Earth"
+      ? "rgba(84, 91, 254, 1)"
+      : name === "Mars"
+      ? "rgba(255, 106, 69, 1)"
+      : name === "Jupiter"
+      ? "rgba(236, 173, 122, 1)"
+      : name === "Saturn"
+      ? "rgba(252, 203, 107, 1)"
+      : name === "Uranus"
+      ? "rgba(101, 240, 213, 1)"
+      : name === "Neptune"
+      ? "rgba(73, 126, 250, 1)"
+      : "red"};
 `;
 const Planet = styled.div`
   padding: 2rem 0 2rem 0;

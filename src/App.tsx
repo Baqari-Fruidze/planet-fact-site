@@ -9,11 +9,11 @@ import Test from "./pages/Test";
 import Header from "./components/Header";
 
 function App() {
-  // const [data, setData] = useState<Tdata>(information);
+  const [show, setshow] = useState<boolean>(false);
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header show={show} setShow={setshow} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/test" element={<Test />} />
