@@ -4,38 +4,39 @@ import { useMediaQuery } from "@uidotdev/usehooks";
 import data from "../data.json";
 import { Tdata } from "../Typed";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Home() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const foo = data.find((el) => el.name === location.pathname);
+    if (!foo) {
+      navigate("/earth");
+    }
+  }, []);
   const NumberToShow = useMediaQuery("only screen and (min-width : 48rem)");
   const [overview, setOverview] = useState<string[]>(["overview"]);
   const location = useLocation();
-  console.log(location.pathname);
+  const filtered = data.filter((el) => location.pathname === "/");
 
   return (
     <Parent>
       <MiddleMainCon>
-        {data.map((planet) => {
-          return (
-            <>
-              <OverviewStructureSurface>
-                <Overview>
-                  {NumberToShow ? <span>01</span> : null}
-                  <p>Overview</p>
-                </Overview>
-                <Structure>
-                  {NumberToShow ? <span>02</span> : null}
-                  <p>Structure</p>
-                </Structure>
-                <Surface>
-                  {NumberToShow ? <span>03</span> : null}
-                  <p>Surface</p>
-                </Surface>
-              </OverviewStructureSurface>
-              <img src={planet.name} alt="" />
-            </>
-          );
-        })}
+        <OverviewStructureSurface>
+          <Overview>
+            {NumberToShow ? <span>01</span> : null}
+            <p>Overview</p>
+          </Overview>
+          <Structure>
+            {NumberToShow ? <span>02</span> : null}
+            <p>Structure</p>
+          </Structure>
+          <Surface>
+            {NumberToShow ? <span>03</span> : null}
+            <p>Surface</p>
+          </Surface>
+        </OverviewStructureSurface>
       </MiddleMainCon>
     </Parent>
   );
