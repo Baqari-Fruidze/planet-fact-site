@@ -1,27 +1,41 @@
 import React from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import data from "../data.json";
+import { Tdata } from "../Typed";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function Home() {
   const NumberToShow = useMediaQuery("only screen and (min-width : 48rem)");
+  const [overview, setOverview] = useState<string[]>(["overview"]);
+  const location = useLocation();
+  console.log(location.pathname);
+
   return (
     <Parent>
       <MiddleMainCon>
-        <OverviewStructureSurface>
-          <Overview>
-            {NumberToShow ? <span>01</span> : null}
-            <p>Overview</p>
-          </Overview>
-          <Structure>
-            {NumberToShow ? <span>02</span> : null}
-            <p>Structure</p>
-          </Structure>
-          <Surface>
-            {NumberToShow ? <span>03</span> : null}
-            <p>Surface</p>
-          </Surface>
-        </OverviewStructureSurface>
-        <img src="" alt="" />
+        {data.map((planet) => {
+          return (
+            <>
+              <OverviewStructureSurface>
+                <Overview>
+                  {NumberToShow ? <span>01</span> : null}
+                  <p>Overview</p>
+                </Overview>
+                <Structure>
+                  {NumberToShow ? <span>02</span> : null}
+                  <p>Structure</p>
+                </Structure>
+                <Surface>
+                  {NumberToShow ? <span>03</span> : null}
+                  <p>Surface</p>
+                </Surface>
+              </OverviewStructureSurface>
+              <img src={planet.name} alt="" />
+            </>
+          );
+        })}
       </MiddleMainCon>
     </Parent>
   );
@@ -79,6 +93,7 @@ const OverviewStructureSurface = styled.div`
   justify-content: space-between;
   padding: 0 1.5rem 0.05rem 1rem;
   border-bottom: 1px solid grey;
+  margin-bottom: 3rem;
 `;
 const MiddleMainCon = styled.div`
   display: flex;

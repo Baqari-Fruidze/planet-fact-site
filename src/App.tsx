@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Test from "./pages/Test";
 import Header from "./components/Header";
+import Structure from "./pages/Structure";
+import Surface from "./pages/Surface";
 
 function App() {
   const [show, setshow] = useState<boolean>(false);
@@ -16,7 +18,7 @@ function App() {
         <Header show={show} setShow={setshow} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/:name" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </>

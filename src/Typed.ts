@@ -21,4 +21,4 @@ export type Tdata = {
     internal: string;
     geology: string;
   };
-};
+}[];
