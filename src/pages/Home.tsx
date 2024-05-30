@@ -16,9 +16,13 @@ export default function Home() {
     }
   }, []);
   const NumberToShow = useMediaQuery("only screen and (min-width : 48rem)");
-  const [overview, setOverview] = useState<string[]>(["overview"]);
+  const [overview, setOverview] = useState<string>("overview");
   const location = useLocation();
-  const filtered = data.filter((el) => location.pathname === "/");
+  console.log(location.pathname);
+  const finded = data.find(
+    (el) => el.name.toLowerCase() === location.pathname.slice(1)
+  );
+  console.log(finded);
 
   return (
     <Parent>
@@ -37,11 +41,12 @@ export default function Home() {
             <p>Surface</p>
           </Surface>
         </OverviewStructureSurface>
+        <Img src={finded?.images.planet} alt="" mobSize={finded?.size.mobile} />
       </MiddleMainCon>
     </Parent>
   );
 }
-const Img = styled.img``;
+const Img = styled.img<mobSize:{width:string}>``;
 const Surface = styled.div`
   padding-bottom: 1.7rem;
   border-bottom: 4px solid #6d2ed5;

@@ -6,6 +6,7 @@ import styled from "styled-components";
 import data from "../data.json";
 import { Tdata } from "../Typed";
 import { useMediaQuery } from "@uidotdev/usehooks";
+import { Link } from "react-router-dom";
 
 export default function Header({
   show,
@@ -27,7 +28,7 @@ export default function Header({
             <Planet name={el.name}>
               <CircelAndPlanetNameCon>
                 <Circle name={el.name}></Circle>
-                <p>{el.name}</p>
+                <Link to={`/${el.name.toLowerCase()}`}>{el.name}</Link>
               </CircelAndPlanetNameCon>
               {ArrowToHide ? <img src={arrowRight} alt="" /> : null}
             </Planet>
@@ -41,7 +42,8 @@ const CircelAndPlanetNameCon = styled.div`
   display: flex;
   align-items: center;
   gap: 2.5rem;
-  & > p {
+  & > a {
+    text-decoration: none;
     color: #fff;
     text-align: center;
     font-family: Spartan;
