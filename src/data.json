@@ -35,6 +35,20 @@
         "width": "290px",
         "height": "290px"
       }
+    },
+    "sizeSurface": {
+      "mobile": {
+        "width": "70px",
+        "height": "70px"
+      },
+      "tablet": {
+        "width": "100px",
+        "height": "100px"
+      },
+      "desktop": {
+        "width": "140px",
+        "height": "140px"
+      }
     }
   },
   {
@@ -72,6 +86,20 @@
       "desktop": {
         "width": "400px",
         "height": "400px"
+      }
+    },
+    "sizeSurface": {
+      "mobile": {
+        "width": "70px",
+        "height": "70px"
+      },
+      "tablet": {
+        "width": "100px",
+        "height": "100px"
+      },
+      "desktop": {
+        "width": "140px",
+        "height": "140px"
       }
     }
   },
@@ -111,6 +139,20 @@
         "width": "450px",
         "height": "450px"
       }
+    },
+    "sizeSurface": {
+      "mobile": {
+        "width": "70px",
+        "height": "70px"
+      },
+      "tablet": {
+        "width": "100px",
+        "height": "100px"
+      },
+      "desktop": {
+        "width": "140px",
+        "height": "140px"
+      }
     }
   },
   {
@@ -148,6 +190,20 @@
       "desktop": {
         "width": "336px",
         "height": "336px"
+      }
+    },
+    "sizeSurface": {
+      "mobile": {
+        "width": "70px",
+        "height": "70px"
+      },
+      "tablet": {
+        "width": "100px",
+        "height": "100px"
+      },
+      "desktop": {
+        "width": "140px",
+        "height": "140px"
       }
     }
   },
@@ -187,6 +243,20 @@
         "width": "582px",
         "height": "582px"
       }
+    },
+    "sizeSurface": {
+      "mobile": {
+        "width": "70px",
+        "height": "70px"
+      },
+      "tablet": {
+        "width": "100px",
+        "height": "100px"
+      },
+      "desktop": {
+        "width": "140px",
+        "height": "140px"
+      }
     }
   },
   {
@@ -224,6 +294,20 @@
       "desktop": {
         "width": "794px",
         "height": "794px"
+      }
+    },
+    "sizeSurface": {
+      "mobile": {
+        "width": "70px",
+        "height": "70px"
+      },
+      "tablet": {
+        "width": "100px",
+        "height": "100px"
+      },
+      "desktop": {
+        "width": "140px",
+        "height": "140px"
       }
     }
   },
@@ -263,6 +347,20 @@
         "width": "458px",
         "height": "458px"
       }
+    },
+    "sizeSurface": {
+      "mobile": {
+        "width": "70px",
+        "height": "70px"
+      },
+      "tablet": {
+        "width": "100px",
+        "height": "100px"
+      },
+      "desktop": {
+        "width": "140px",
+        "height": "140px"
+      }
     }
   },
   {
@@ -300,6 +398,20 @@
       "desktop": {
         "width": "450px",
         "height": "450px"
+      }
+    },
+    "sizeSurface": {
+      "mobile": {
+        "width": "70px",
+        "height": "70px"
+      },
+      "tablet": {
+        "width": "100px",
+        "height": "100px"
+      },
+      "desktop": {
+        "width": "140px",
+        "height": "140px"
       }
     }
   }

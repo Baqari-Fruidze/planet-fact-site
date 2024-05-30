@@ -11,6 +11,7 @@ import source from "/assets/icon-source.svg";
 import Footer from "../components/Footer";
 import { TImg } from "../types/Img";
 import Structure from "../components/Structure";
+import Surface from "../components/Surface";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ export default function Home() {
   );
   const isSmallDevice = useMediaQuery("only screen and (max-width : 767px)");
   const isLargeDevice = useMediaQuery("only screen (min-width : 1441px)");
-  const [overview, setOverview] = useState<string>("structure");
+  const [overview, setOverview] = useState<string>("surface");
   const location = useLocation();
   const finded = data.find(
     (el) => el.name.toLowerCase() === location.pathname.slice(1)
@@ -64,13 +65,7 @@ export default function Home() {
             />
             <InfoCon>
               <HOne>{finded?.name}</HOne>
-              <Para>
-                Third planet from the Sun and the only known planet to harbor
-                life. About 29.2% of Earth's surface is land with remaining
-                70.8% is covered with water. Earth's distance from the Sun,
-                physical properties and geological history have allowed life to
-                evolve and thrive.
-              </Para>
+              <Para>{finded?.overview.content}</Para>
               <Span>
                 Source : <ATag href={finded?.overview.source}>Wikipedia</ATag>
                 <img src={source} alt="" />
@@ -80,7 +75,7 @@ export default function Home() {
         ) : overview === "structure" ? (
           <Structure finded={finded} />
         ) : (
-          <Surface />
+          <Surface finded={finded} />
         )}
       </MiddleMainCon>
       <Footer finded={finded} />

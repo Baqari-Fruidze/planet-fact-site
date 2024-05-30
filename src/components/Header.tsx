@@ -26,7 +26,7 @@ export default function Header({
         <Planets>
           {data.map((el) => (
             <Planet name={el.name}>
-              <CircelAndPlanetNameCon>
+              <CircelAndPlanetNameCon onClick={() => setShow(!show)}>
                 <Circle name={el.name}></Circle>
                 <Link to={`/${el.name.toLowerCase()}`}>{el.name}</Link>
               </CircelAndPlanetNameCon>

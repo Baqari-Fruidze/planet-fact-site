@@ -3,36 +3,35 @@ interface Size {
   height: string;
 }
 
-interface Overview {
-  content: string;
-  source: string;
-}
-
 interface Images {
   planet: string;
   internal: string;
   geology: string;
 }
 
-export interface Tdata {
-  geology: {
-    content: string;
-    source: string;
-  };
-  images: Images;
+interface Overview {
+  content: string;
+  source: string;
+}
+
+export interface Planet {
   name: string;
   overview: Overview;
-  radius: string;
-  revolution: string;
+  structure: Overview;
+  geology: Overview;
   rotation: string;
+  revolution: string;
+  radius: string;
+  temperature: string;
+  images: Images;
   size: {
-    desktop: Size;
     mobile: Size;
     tablet: Size;
+    desktop: Size;
   };
-  structure: {
-    content: string;
-    source: string;
+  sizeSurface: {
+    mobile: Size;
+    tablet: Size;
+    desktop: Size;
   };
-  temperature: string;
 }
