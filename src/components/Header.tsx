@@ -4,7 +4,7 @@ import burger from "/assets/icon-hamburger.svg";
 import source from "/assets/icon-source.svg";
 import styled from "styled-components";
 import data from "../data.json";
-import { Tdata } from "../Typed";
+import { Tdata } from "../types/Typed";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { Link } from "react-router-dom";
 
