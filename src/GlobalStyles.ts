@@ -12,4 +12,5 @@ html{
 }
 body{
     font-family: "League Spartan", sans-serif;
+    min-height: 100vh;
 }`;

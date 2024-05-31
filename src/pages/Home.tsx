@@ -221,6 +221,7 @@ const MiddleMainCon = styled.div`
   margin-bottom: 2.8rem;
 `;
 const Parent = styled.div`
+  height: 100vh;
   padding: 2rem 2.4rem 4.7rem;
   background: #070724;
 `;

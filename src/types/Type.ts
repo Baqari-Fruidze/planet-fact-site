@@ -14,7 +14,7 @@ interface Overview {
   source: string;
 }
 
-export interface Planet {
+export interface Tdata {
   name: string;
   overview: Overview;
   structure: Overview;
@@ -38,5 +38,11 @@ export interface Planet {
     mobile: string;
     tablet: string;
     desktop: string;
+  };
+  absoluteTop: {
+    mobile: {
+      bottom: string;
+      left: string;
+    };
   };
 }

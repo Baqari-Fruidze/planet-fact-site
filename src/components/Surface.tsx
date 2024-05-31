@@ -4,16 +4,25 @@ import styled from "styled-components";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { TImg } from "../types/Img";
 import source from "/assets/icon-source.svg";
-
+import { Tabsolute } from "../types/AbsoluteType";
 export default function Structure({ finded }: { finded: Tdata | undefined }) {
   const isMediumDevice = useMediaQuery(
     "only screen and (min-width : 48rem) and (max-width : 90rem)"
   );
   const isSmallDevice = useMediaQuery("only screen and (max-width : 767px)");
   const isLargeDevice = useMediaQuery("only screen (min-width : 1441px)");
+  console.log(finded?.absoluteTop.mobile.left);
   return (
     <>
-      <ImageContainer>
+      <ImageContainer
+        margin={
+          isSmallDevice
+            ? finded?.marginTopBottom?.mobile
+            : isMediumDevice
+            ? finded?.marginTopBottom?.tablet
+            : finded?.marginTopBottom?.desktop
+        }
+      >
         <Image
           src={finded?.images.planet}
           alt=""
@@ -25,19 +34,20 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
               : finded?.size.desktop
           }
         />
+        <ImageCenter
+          src={finded?.images.geology}
+          alt=""
+          sizeSecond={
+            isSmallDevice
+              ? finded?.sizeSurface.mobile
+              : isMediumDevice
+              ? finded?.sizeSurface.tablet
+              : finded?.sizeSurface.desktop
+          }
+          position={finded?.absoluteTop?.mobile}
+        />
       </ImageContainer>
 
-      <ImageCenter
-        src={finded?.images.geology}
-        alt=""
-        sizeSecond={
-          isSmallDevice
-            ? finded?.sizeSurface.mobile
-            : isMediumDevice
-            ? finded?.sizeSurface.tablet
-            : finded?.sizeSurface.desktop
-        }
-      />
       <InfoCon>
         <HOne>{finded?.name}</HOne>
         <Para>{finded?.geology.content}</Para>
@@ -49,21 +59,24 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
     </>
   );
 }
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<{ margin: string | undefined }>`
+  margin-top: ${(props) => props.margin};
+  margin-bottom: ${(props) => props.margin};
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 6.7rem;
 `;
-const ImageCenter = styled.img<{ sizeSecond: TImg }>`
-  transform: translateY(-16%);
-  left: 42%;
-  top: 31%;
+const ImageCenter = styled.img<{
+  sizeSecond: TImg | undefined;
+  position: Tabsolute | undefined;
+}>`
+  transform: translateX(-50%);
+  bottom: ${(props) => props.position?.bottom};
+  left: 50%;
   position: absolute;
-  margin: 0 auto;
-  width: ${(props) => props.sizeSecond.width};
-  height: ${(props) => props.sizeSecond.height};
+  width: ${(props) => props?.sizeSecond?.width};
+  height: ${(props) => props?.sizeSecond?.height};
 `;
 const Image = styled.img<{ size: TImg | undefined }>`
   width: ${(props) => props.size?.width};

@@ -23,6 +23,13 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
             ? finded?.size.tablet
             : finded?.size.desktop
         }
+        margin={
+          isSmallDevice
+            ? finded?.marginTopBottom?.mobile
+            : isMediumDevice
+            ? finded?.marginTopBottom?.tablet
+            : finded?.marginTopBottom?.desktop
+        }
       />
       <InfoCon>
         <HOne>{finded?.name}</HOne>
@@ -35,8 +42,12 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
     </>
   );
 }
-const Image = styled.img<{ size: TImg | undefined }>`
-  margin-bottom: 6.7rem;
+const Image = styled.img<{
+  size: TImg | undefined;
+  margin: string | undefined;
+}>`
+  margin-top: ${(props) => props.margin};
+  margin-bottom: ${(props) => props.margin};
   margin-left: auto;
   margin-right: auto;
   width: ${(props) => props.size?.width};
