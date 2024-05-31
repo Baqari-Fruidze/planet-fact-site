@@ -36,7 +36,9 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
   );
 }
 const Image = styled.img<{ size: TImg | undefined }>`
-  margin: 0 auto;
+  margin-bottom: 6.7rem;
+  margin-left: auto;
+  margin-right: auto;
   width: ${(props) => props.size?.width};
   height: ${(props) => props.size?.height};
 `;

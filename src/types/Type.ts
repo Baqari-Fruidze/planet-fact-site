@@ -34,4 +34,9 @@ export interface Planet {
     tablet: Size;
     desktop: Size;
   };
+  marginTopBottom: {
+    mobile: string;
+    tablet: string;
+    desktop: string;
+  };
 }

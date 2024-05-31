@@ -12,8 +12,15 @@ import Footer from "../components/Footer";
 import { TImg } from "../types/Img";
 import Structure from "../components/Structure";
 import Surface from "../components/Surface";
+import { MarginTopBottom } from "../types/MarginTopBottom";
 
-export default function Home() {
+export default function Home({
+  show,
+  setShow,
+}: {
+  show: boolean;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const navigate = useNavigate();
   useEffect(() => {
     const foo = data.find((el) => el.name === location.pathname.slice(1));
@@ -27,59 +34,76 @@ export default function Home() {
   );
   const isSmallDevice = useMediaQuery("only screen and (max-width : 767px)");
   const isLargeDevice = useMediaQuery("only screen (min-width : 1441px)");
-  const [overview, setOverview] = useState<string>("surface");
+  const [overview, setOverview] = useState<string>("overview");
   const location = useLocation();
   const finded = data.find(
     (el) => el.name.toLowerCase() === location.pathname.slice(1)
   );
 
   return (
-    <Parent>
-      <MiddleMainCon>
-        <OverviewStructureSurface>
-          <Overview>
-            {NumberToShow ? <span>01</span> : null}
-            <p>Overview</p>
-          </Overview>
-          <Structuree>
-            {NumberToShow ? <span>02</span> : null}
-            <p>Structure</p>
-          </Structuree>
-          <Surfacee>
-            {NumberToShow ? <span>03</span> : null}
-            <p>Surface</p>
-          </Surfacee>
-        </OverviewStructureSurface>
-        {overview === "overview" ? (
-          <>
-            <Img
-              src={finded?.images.planet}
-              alt=""
-              size={
-                isSmallDevice
-                  ? finded?.size.mobile
-                  : isMediumDevice
-                  ? finded?.size.tablet
-                  : finded?.size.desktop
-              }
-            />
-            <InfoCon>
-              <HOne>{finded?.name}</HOne>
-              <Para>{finded?.overview.content}</Para>
-              <Span>
-                Source : <ATag href={finded?.overview.source}>Wikipedia</ATag>
-                <img src={source} alt="" />
-              </Span>
-            </InfoCon>
-          </>
-        ) : overview === "structure" ? (
-          <Structure finded={finded} />
-        ) : (
-          <Surface finded={finded} />
-        )}
-      </MiddleMainCon>
-      <Footer finded={finded} />
-    </Parent>
+    <>
+      {show ? null : (
+        <Parent>
+          <MiddleMainCon>
+            <OverviewStructureSurface>
+              <Overview
+                onClick={() => setOverview("overview")}
+                state={overview}
+              >
+                {NumberToShow ? <span>01</span> : null}
+                <p>Overview</p>
+              </Overview>
+              <Structuree
+                onClick={() => setOverview("structure")}
+                state={overview}
+              >
+                {NumberToShow ? <span>02</span> : null}
+                <p>Structure</p>
+              </Structuree>
+              <Surfacee onClick={() => setOverview("surface")} state={overview}>
+                {NumberToShow ? <span>03</span> : null}
+                <p>Surface</p>
+              </Surfacee>
+            </OverviewStructureSurface>
+            {overview === "overview" ? (
+              <>
+                <Img
+                  src={finded?.images.planet}
+                  alt=""
+                  size={
+                    isSmallDevice
+                      ? finded?.size.mobile
+                      : isMediumDevice
+                      ? finded?.size.tablet
+                      : finded?.size.desktop
+                  }
+                  margin={
+                    isSmallDevice
+                      ? finded?.marginTopBottom?.mobile
+                      : isMediumDevice
+                      ? finded?.marginTopBottom?.tablet
+                      : finded?.marginTopBottom?.desktop
+                  }
+                />
+                <InfoCon>
+                  <HOne>{finded?.name}</HOne>
+                  <Para>{finded?.overview.content}</Para>
+                  <Span>
+                    <ATag href={finded?.overview.source}>Wikipedia</ATag>
+                    <img src={source} alt="" />
+                  </Span>
+                </InfoCon>
+              </>
+            ) : overview === "structure" ? (
+              <Structure finded={finded} />
+            ) : (
+              <Surface finded={finded} />
+            )}
+          </MiddleMainCon>
+          <Footer finded={finded} />
+        </Parent>
+      )}
+    </>
   );
 }
 const ATag = styled.a`
@@ -99,7 +123,7 @@ const Span = styled.span`
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 25px; /* 208.333% */
+  line-height: 25px;
 `;
 const Para = styled.p`
   color: #fff;
@@ -126,15 +150,18 @@ const InfoCon = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Img = styled.img<{ size: TImg | undefined }>`
-  margin: 0 auto;
+const Img = styled.img<{ size: TImg | undefined; margin: string | undefined }>`
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: ${(props) => props.margin};
+  margin-bottom: ${(props) => props.margin};
   width: ${(props) => props.size?.width};
   height: ${(props) => props.size?.height};
-  margin-bottom: 4rem;
 `;
-const Surfacee = styled.div`
+const Surfacee = styled.div<{ state: string }>`
   padding-bottom: 1.7rem;
-  border-bottom: 4px solid #6d2ed5;
+  border-bottom: ${(props) =>
+    props.state.includes("surface") ? "4px solid #6d2ed5" : null};
   & p {
     color: #fff;
     text-align: center;
@@ -148,9 +175,10 @@ const Surfacee = styled.div`
     opacity: 0.5;
   }
 `;
-const Structuree = styled.div`
+const Structuree = styled.div<{ state: string }>`
   padding-bottom: 1.7rem;
-  border-bottom: 4px solid #6d2ed5;
+  border-bottom: ${(props) =>
+    props.state.includes("structure") ? "4px solid #6d2ed5" : null};
   & p {
     color: #fff;
     text-align: center;
@@ -164,9 +192,10 @@ const Structuree = styled.div`
     opacity: 0.5;
   }
 `;
-const Overview = styled.div`
+const Overview = styled.div<{ state: string }>`
   padding-bottom: 1.7rem;
-  border-bottom: 4px solid #6d2ed5;
+  border-bottom: ${(props) =>
+    props.state.includes("overview") ? "4px solid #6d2ed5" : null};
   & p {
     color: #fff;
     text-align: center;
@@ -184,7 +213,7 @@ const OverviewStructureSurface = styled.div`
   justify-content: space-between;
   padding: 0 1.5rem 0.05rem 1rem;
   border-bottom: 1px solid grey;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
 `;
 const MiddleMainCon = styled.div`
   display: flex;

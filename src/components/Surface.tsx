@@ -13,17 +13,20 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
   const isLargeDevice = useMediaQuery("only screen (min-width : 1441px)");
   return (
     <>
-      <Image
-        src={finded?.images.planet}
-        alt=""
-        size={
-          isSmallDevice
-            ? finded?.size.mobile
-            : isMediumDevice
-            ? finded?.size.tablet
-            : finded?.size.desktop
-        }
-      />
+      <ImageContainer>
+        <Image
+          src={finded?.images.planet}
+          alt=""
+          size={
+            isSmallDevice
+              ? finded?.size.mobile
+              : isMediumDevice
+              ? finded?.size.tablet
+              : finded?.size.desktop
+          }
+        />
+      </ImageContainer>
+
       <ImageCenter
         src={finded?.images.geology}
         alt=""
@@ -46,16 +49,23 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
     </>
   );
 }
+const ImageContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6.7rem;
+`;
 const ImageCenter = styled.img<{ sizeSecond: TImg }>`
+  transform: translateY(-16%);
   left: 42%;
-  top: 27%;
+  top: 31%;
   position: absolute;
   margin: 0 auto;
   width: ${(props) => props.sizeSecond.width};
   height: ${(props) => props.sizeSecond.height};
 `;
 const Image = styled.img<{ size: TImg | undefined }>`
-  margin: 0 auto;
   width: ${(props) => props.size?.width};
   height: ${(props) => props.size?.height};
 `;

@@ -36,6 +36,12 @@
         "height": "290px"
       }
     },
+
+    "marginTopBottom": {
+      "mobile": "96px",
+      "tablet": "138px",
+      "desktop": "232px"
+    },
     "sizeSurface": {
       "mobile": {
         "width": "70px",
@@ -87,6 +93,12 @@
         "width": "400px",
         "height": "400px"
       }
+    },
+
+    "marginTopBottom": {
+      "mobile": "75px",
+      "tablet": "103px",
+      "desktop": "177px"
     },
     "sizeSurface": {
       "mobile": {
@@ -140,6 +152,12 @@
         "height": "450px"
       }
     },
+
+    "marginTopBottom": {
+      "mobile": "77px",
+      "tablet": "87px",
+      "desktop": "152px"
+    },
     "sizeSurface": {
       "mobile": {
         "width": "70px",
@@ -191,6 +209,12 @@
         "width": "336px",
         "height": "336px"
       }
+    },
+
+    "marginTopBottom": {
+      "mobile": "87px",
+      "tablet": "123px",
+      "desktop": "209px"
     },
     "sizeSurface": {
       "mobile": {
@@ -244,6 +268,12 @@
         "height": "582px"
       }
     },
+
+    "marginTopBottom": {
+      "mobile": "40px",
+      "tablet": "49px",
+      "desktop": "86px"
+    },
     "sizeSurface": {
       "mobile": {
         "width": "70px",
@@ -288,13 +318,18 @@
         "height": "256px"
       },
       "tablet": {
-        "width": "503px",
-        "height": "503px"
+        "width": "330px",
+        "height": "330px"
       },
       "desktop": {
-        "width": "794px",
-        "height": "794px"
+        "width": "500px",
+        "height": "500px"
       }
+    },
+    "marginTopBottom": {
+      "mobile": "24px",
+      "tablet": "75px",
+      "desktop": "127px"
     },
     "sizeSurface": {
       "mobile": {
@@ -348,6 +383,11 @@
         "height": "458px"
       }
     },
+    "marginTopBottom": {
+      "mobile": "64px",
+      "tablet": "85px",
+      "desktop": "148px"
+    },
     "sizeSurface": {
       "mobile": {
         "width": "70px",
@@ -399,6 +439,12 @@
         "width": "450px",
         "height": "450px"
       }
+    },
+
+    "marginTopBottom": {
+      "mobile": "65px",
+      "tablet": "87px",
+      "desktop": "148px"
     },
     "sizeSurface": {
       "mobile": {

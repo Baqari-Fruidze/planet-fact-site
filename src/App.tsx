@@ -14,7 +14,10 @@ function App() {
         <Header show={show} setShow={setshow} />
         <Routes>
           <Route path="/" element={<Navigate to={"/earth"} />} />
-          <Route path="/:name" element={<Home />} />
+          <Route
+            path="/:name"
+            element={<Home show={show} setShow={setshow} />}
+          />
         </Routes>
       </BrowserRouter>
     </>
