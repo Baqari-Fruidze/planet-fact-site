@@ -42,7 +42,6 @@ export interface Tdata {
   absoluteTop: {
     mobile: {
       bottom: string;
-      left: string;
     };
   };
 }
