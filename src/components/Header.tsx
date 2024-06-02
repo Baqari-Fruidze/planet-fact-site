@@ -7,6 +7,7 @@ import data from "../data.json";
 import { Tdata } from "../types/Typed";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { Link } from "react-router-dom";
+import TabletAndDesktopHeader from "./TabletAndDesktopHeader";
 
 export default function Header({
   show,
@@ -16,11 +17,17 @@ export default function Header({
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const ArrowToHide = useMediaQuery("only screen and (max-width : 48rem)");
+  const BurgerToHide = useMediaQuery("only screen and (max-width : 48rem)");
+  const BurgerTabletAndDesktop = useMediaQuery(
+    "only screen and (min-width : 48rem)"
+  );
   return (
     <BurgerMain>
       <Head>
         <HOne>THE PLANETS</HOne>
-        <img src={burger} alt="" onClick={() => setShow(!show)} />
+        {BurgerToHide ? (
+          <img src={burger} alt="" onClick={() => setShow(!show)} />
+        ) : null}
       </Head>
       {show ? (
         <Planets>
@@ -35,6 +42,7 @@ export default function Header({
           ))}
         </Planets>
       ) : null}
+      {BurgerTabletAndDesktop ? <TabletAndDesktopHeader /> : null}
     </BurgerMain>
   );
 }
@@ -106,9 +114,16 @@ const Head = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1.7rem;
+  @media (min-width: 48rem) {
+    justify-content: center;
+    padding-bottom: 3.9rem;
+  }
 `;
 const BurgerMain = styled.div`
   width: 100%;
   background: rgba(7, 7, 36, 1);
   padding: 1.6rem 2.4rem 1.75rem;
+  @media (min-width: 48rem) {
+    padding: 3.2rem 5.3rem 2.7rem;
+  }
 `;

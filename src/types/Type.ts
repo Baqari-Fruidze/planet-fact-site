@@ -15,6 +15,7 @@ interface Overview {
 }
 
 export interface Tdata {
+  color: string;
   name: string;
   overview: Overview;
   structure: Overview;

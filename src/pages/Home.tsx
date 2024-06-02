@@ -49,6 +49,7 @@ export default function Home({
               <Overview
                 onClick={() => setOverview("overview")}
                 state={overview}
+                color={finded?.color}
               >
                 {NumberToShow ? <span>01</span> : null}
                 <p>Overview</p>
@@ -56,13 +57,16 @@ export default function Home({
               <Structuree
                 onClick={() => setOverview("structure")}
                 state={overview}
+                color={finded?.color}
               >
-                {NumberToShow ? <span>02</span> : null}
-                <p>Structure</p>
+                {NumberToShow ? <span>02</span> : null} <p>Structure</p>
               </Structuree>
-              <Surfacee onClick={() => setOverview("surface")} state={overview}>
-                {NumberToShow ? <span>03</span> : null}
-                <p>Surface</p>
+              <Surfacee
+                onClick={() => setOverview("surface")}
+                state={overview}
+                color={finded?.color}
+              >
+                {NumberToShow ? <span>03</span> : null} <p>Surface</p>
               </Surfacee>
             </OverviewStructureSurface>
             {overview === "overview" ? (
@@ -158,10 +162,10 @@ const Img = styled.img<{ size: TImg | undefined; margin: string | undefined }>`
   width: ${(props) => props.size?.width};
   height: ${(props) => props.size?.height};
 `;
-const Surfacee = styled.div<{ state: string }>`
+const Surfacee = styled.div<{ state: string; color: string }>`
   padding-bottom: 1.7rem;
-  border-bottom: ${(props) =>
-    props.state.includes("surface") ? "4px solid #6d2ed5" : null};
+  border-bottom: ${({ state, color }) =>
+    state.includes("surface") ? `4px solid ${color}` : null};
   & p {
     color: #fff;
     text-align: center;
@@ -172,13 +176,13 @@ const Surfacee = styled.div<{ state: string }>`
     line-height: normal;
     letter-spacing: 1.929px;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: ${(props) => (props.state.includes("surface") ? "1" : "0.5")};
   }
 `;
-const Structuree = styled.div<{ state: string }>`
+const Structuree = styled.div<{ state: string; color: string }>`
   padding-bottom: 1.7rem;
-  border-bottom: ${(props) =>
-    props.state.includes("structure") ? "4px solid #6d2ed5" : null};
+  border-bottom: ${({ state, color }) =>
+    state.includes("structure") ? `4px solid ${color}` : null};
   & p {
     color: #fff;
     text-align: center;
@@ -189,13 +193,13 @@ const Structuree = styled.div<{ state: string }>`
     line-height: normal;
     letter-spacing: 1.929px;
     text-transform: uppercase;
-    opacity: 0.5;
+    opacity: ${(props) => (props.state.includes("structure") ? "1" : "0.5")};
   }
 `;
-const Overview = styled.div<{ state: string }>`
+const Overview = styled.div<{ state: string; color: string }>`
   padding-bottom: 1.7rem;
-  border-bottom: ${(props) =>
-    props.state.includes("overview") ? "4px solid #6d2ed5" : null};
+  border-bottom: ${({ state, color }) =>
+    state.includes("overview") ? `4px solid ${color}` : null};
   & p {
     color: #fff;
     text-align: center;
@@ -206,6 +210,7 @@ const Overview = styled.div<{ state: string }>`
     line-height: normal;
     letter-spacing: 1.929px;
     text-transform: uppercase;
+    opacity: ${(porps) => (porps.state.includes("overview") ? "1" : "0.5")};
   }
 `;
 const OverviewStructureSurface = styled.div`
