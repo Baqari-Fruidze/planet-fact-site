@@ -1,12 +1,15 @@
 import React from "react";
 import data from "../data.json";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function TabletAndDesktopHeader() {
   return (
     <Container>
-      {data.map((el) => (
-        <span>{el.name}</span>
+      {data.map((el, index) => (
+        <Link to={`/${el.name.toLowerCase()}`} key={index}>
+          {el.name}
+        </Link>
       ))}
     </Container>
   );
@@ -14,7 +17,8 @@ export default function TabletAndDesktopHeader() {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  & > span {
+  & > a {
+    text-decoration: none;
     color: #fff;
     font-family: Spartan;
     font-size: 11px;
