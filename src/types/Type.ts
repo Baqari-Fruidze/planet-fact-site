@@ -44,5 +44,8 @@ export interface Tdata {
     mobile: {
       bottom: string;
     };
+    tablet: {
+      bottom: string;
+    };
   };
 }

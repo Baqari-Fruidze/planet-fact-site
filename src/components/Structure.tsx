@@ -52,6 +52,10 @@ const Image = styled.img<{
   margin-right: auto;
   width: ${(props) => props.size?.width};
   height: ${(props) => props.size?.height};
+  @media (min-width: 48rem) {
+    grid-column: 1/3;
+    grid-row: 1/3;
+  }
 `;
 const ATag = styled.a`
   opacity: 0.5;
@@ -81,6 +85,15 @@ const Para = styled.p`
   font-weight: 400;
   line-height: 22px;
   margin-bottom: 1rem;
+  @media (min-width: 48rem) {
+    text-align: left;
+    color: #fff;
+    font-family: Spartan;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+  }
 `;
 const HOne = styled.h1`
   color: #fff;
@@ -92,8 +105,23 @@ const HOne = styled.h1`
   line-height: normal;
   text-transform: uppercase;
   margin-bottom: 1.6rem;
+  @media (min-width: 48rem) {
+    margin-bottom: 2.4rem;
+    text-align: left;
+    color: #fff;
+    font-family: Antonio;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+  }
 `;
 const InfoCon = styled.div`
   display: flex;
   flex-direction: column;
+  @media (min-width: 48rem) {
+    grid-column: 1/2;
+    grid-row: 3/5;
+  }
 `;

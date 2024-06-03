@@ -60,6 +60,9 @@
     "absoluteTop": {
       "mobile": {
         "bottom": "-20%"
+      },
+      "tablet": {
+        "bottom": "-40%"
       }
     }
   },
@@ -123,6 +126,9 @@
     },
     "absoluteTop": {
       "mobile": {
+        "bottom": "-20%"
+      },
+      "tablet": {
         "bottom": "-20%"
       }
     }
@@ -188,6 +194,9 @@
     "absoluteTop": {
       "mobile": {
         "bottom": "-20%"
+      },
+      "tablet": {
+        "bottom": "-20%"
       }
     }
   },
@@ -252,6 +261,9 @@
     "absoluteTop": {
       "mobile": {
         "bottom": "-20%"
+      },
+      "tablet": {
+        "bottom": "-30%"
       }
     }
   },
@@ -316,6 +328,9 @@
     "absoluteTop": {
       "mobile": {
         "bottom": "-20%"
+      },
+      "tablet": {
+        "bottom": "-10%"
       }
     }
   },
@@ -379,6 +394,9 @@
     "absoluteTop": {
       "mobile": {
         "bottom": "-20%"
+      },
+      "tablet": {
+        "bottom": "-2%"
       }
     }
   },
@@ -441,6 +459,9 @@
     },
     "absoluteTop": {
       "mobile": {
+        "bottom": "-20%"
+      },
+      "tablet": {
         "bottom": "-20%"
       }
     }
@@ -505,6 +526,9 @@
     },
     "absoluteTop": {
       "mobile": {
+        "bottom": "-20%"
+      },
+      "tablet": {
         "bottom": "-20%"
       }
     }
