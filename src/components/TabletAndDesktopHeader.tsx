@@ -15,8 +15,9 @@ export default function TabletAndDesktopHeader() {
   );
 }
 const Container = styled.div`
+  align-items: center;
   display: flex;
-  justify-content: space-between;
+  gap: 3.3rem;
   & > a {
     text-decoration: none;
     color: #fff;

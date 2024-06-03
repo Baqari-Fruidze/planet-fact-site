@@ -37,6 +37,9 @@ const Cons = styled.div`
     width: 100%;
     flex-direction: column;
     padding: 1.6rem 0 1.9rem 1.5rem;
+    @media (min-width: 90rem) {
+      padding: 2rem 0 2.7rem 2.3rem;
+    }
   }
   & > p {
     color: #fff;
@@ -57,6 +60,17 @@ const Cons = styled.div`
       line-height: 16px; /* 200% */
       letter-spacing: 0.727px;
       text-transform: uppercase;
+    }
+    @media (min-width: 90rem) {
+      color: #fff;
+      font-family: Spartan;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 25px; /* 227.273% */
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.5;
     }
   }
   & > span {
@@ -79,6 +93,16 @@ const Cons = styled.div`
       letter-spacing: -0.9px;
       text-transform: uppercase;
     }
+    @media (min-width: 90rem) {
+      color: #fff;
+      font-family: Antonio;
+      font-size: 40px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: -1.5px;
+      text-transform: uppercase;
+    }
   }
 `;
 const Foot = styled.footer`
@@ -88,5 +112,8 @@ const Foot = styled.footer`
   @media (min-width: 48rem) {
     flex-direction: row;
     justify-content: space-between;
+  }
+  @media (min-width: 90rem) {
+    gap: 3rem;
   }
 `;

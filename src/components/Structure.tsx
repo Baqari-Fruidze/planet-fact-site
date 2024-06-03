@@ -28,7 +28,7 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
             ? finded?.marginTopBottom?.mobile
             : isMediumDevice
             ? finded?.marginTopBottom?.tablet
-            : finded?.marginTopBottom?.desktop
+            : null
         }
       />
       <InfoCon>
@@ -44,7 +44,7 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
 }
 const Image = styled.img<{
   size: TImg | undefined;
-  margin: string | undefined;
+  margin: string | undefined | null;
 }>`
   margin-top: ${(props) => props.margin};
   margin-bottom: ${(props) => props.margin};
@@ -55,6 +55,10 @@ const Image = styled.img<{
   @media (min-width: 48rem) {
     grid-column: 1/3;
     grid-row: 1/3;
+  }
+  @media (min-width: 90rem) {
+    grid-column: 1/3;
+    grid-row: 1/9;
   }
 `;
 const ATag = styled.a`
@@ -74,7 +78,7 @@ const Span = styled.span`
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 25px; /* 208.333% */
+  line-height: 25px;
 `;
 const Para = styled.p`
   color: #fff;
@@ -93,6 +97,16 @@ const Para = styled.p`
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
+  }
+  @media (min-width: 90rem) {
+    margin-bottom: 2.4rem;
+    color: #fff;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Spartan;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
   }
 `;
 const HOne = styled.h1`
@@ -123,5 +137,10 @@ const InfoCon = styled.div`
   @media (min-width: 48rem) {
     grid-column: 1/2;
     grid-row: 3/5;
+  }
+  @media (min-width: 90rem) {
+    grid-column: 3/4;
+    grid-row: 1/5;
+    margin-bottom: 3rem;
   }
 `;

@@ -2,17 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import data from "../data.json";
-import { Tdata } from "../types/Typed";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { Tsizes } from "../types/Sizes";
 import source from "/assets/icon-source.svg";
 import Footer from "../components/Footer";
 import { TImg } from "../types/Img";
 import Structure from "../components/Structure";
 import Surface from "../components/Surface";
-import { MarginTopBottom } from "../types/MarginTopBottom";
 
 export default function Home({
   show,
@@ -33,7 +30,6 @@ export default function Home({
     "only screen and (min-width : 48rem) and (max-width : 90rem)"
   );
   const isSmallDevice = useMediaQuery("only screen and (max-width : 767px)");
-  const isLargeDevice = useMediaQuery("only screen (min-width : 1441px)");
   const [overview, setOverview] = useState<string>("overview");
   const location = useLocation();
   const finded = data.find(
@@ -41,7 +37,7 @@ export default function Home({
   );
 
   return (
-    <>
+    <Back>
       {show ? null : (
         <Parent>
           <MiddleMainCon>
@@ -86,7 +82,7 @@ export default function Home({
                       ? finded?.marginTopBottom?.mobile
                       : isMediumDevice
                       ? finded?.marginTopBottom?.tablet
-                      : finded?.marginTopBottom?.desktop
+                      : null
                   }
                 />
                 <InfoCon>
@@ -108,16 +104,25 @@ export default function Home({
           <Footer finded={finded} />
         </Parent>
       )}
-    </>
+    </Back>
   );
 }
 const SrcSpan = styled.span`
+  opacity: 0.5;
   color: #fff;
   font-family: Spartan;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 25px; /* 208.333% */
+  line-height: 25px;
+  @media (min-width: 90rem) {
+    color: #fff;
+    font-family: Spartan;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px; /* 178.571% */
+  }
 `;
 const ATag = styled.a`
   margin-left: 0.5rem;
@@ -129,6 +134,14 @@ const ATag = styled.a`
   font-weight: 700;
   line-height: 25px;
   text-decoration-line: underline;
+  @media (min-width: 90rem) {
+    color: #fff;
+    font-family: Spartan;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px; /* 178.571% */
+  }
 `;
 const Span = styled.span`
   text-align: center;
@@ -156,6 +169,16 @@ const Para = styled.p`
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
+  }
+  @media (min-width: 90rem) {
+    margin-bottom: 2.4rem;
+    color: #fff;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Spartan;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
   }
 `;
 const HOne = styled.h1`
@@ -187,8 +210,16 @@ const InfoCon = styled.div`
     grid-column: 1/2;
     grid-row: 3/5;
   }
+  @media (min-width: 90rem) {
+    grid-column: 3/4;
+    grid-row: 1/5;
+    margin-bottom: 3rem;
+  }
 `;
-const Img = styled.img<{ size: TImg | undefined; margin: string | undefined }>`
+const Img = styled.img<{
+  size: TImg | undefined;
+  margin: string | undefined | null;
+}>`
   margin-right: auto;
   margin-left: auto;
   margin-top: ${(props) => props.margin};
@@ -198,6 +229,10 @@ const Img = styled.img<{ size: TImg | undefined; margin: string | undefined }>`
   @media (min-width: 48rem) {
     grid-column: 1/3;
     grid-row: 1/3;
+  }
+  @media (min-width: 90rem) {
+    grid-column: 1/3;
+    grid-row: 1/9;
   }
 `;
 const Surfacee = styled.div<{ state: string; color: string | undefined }>`
@@ -222,7 +257,19 @@ const Surfacee = styled.div<{ state: string; color: string | undefined }>`
     line-height: 25px; /* 277.778% */
     letter-spacing: 1.929px;
     text-transform: uppercase;
+    @media (min-width: 90rem) {
+      color: #fff;
+      font-family: Spartan;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 25px;
+      letter-spacing: 2.571px;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
   }
+
   & p {
     color: #fff;
     text-align: center;
@@ -234,6 +281,17 @@ const Surfacee = styled.div<{ state: string; color: string | undefined }>`
     letter-spacing: 1.929px;
     text-transform: uppercase;
     opacity: ${(props) => (props.state.includes("surface") ? "1" : "0.5")};
+    @media (min-width: 90rem) {
+      color: #fff;
+      font-family: Spartan;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 25px; /* 208.333% */
+      letter-spacing: 2.571px;
+      text-transform: uppercase;
+      opacity: 1;
+    }
   }
 `;
 const Structuree = styled.div<{ state: string; color: string | undefined }>`
@@ -258,6 +316,17 @@ const Structuree = styled.div<{ state: string; color: string | undefined }>`
     line-height: 25px; /* 277.778% */
     letter-spacing: 1.929px;
     text-transform: uppercase;
+    @media (min-width: 90rem) {
+      color: #fff;
+      font-family: Spartan;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 25px; /* 208.333% */
+      letter-spacing: 2.571px;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
   }
   & p {
     color: #fff;
@@ -270,6 +339,17 @@ const Structuree = styled.div<{ state: string; color: string | undefined }>`
     letter-spacing: 1.929px;
     text-transform: uppercase;
     opacity: ${(props) => (props.state.includes("structure") ? "1" : "0.5")};
+    @media (min-width: 90rem) {
+      color: #fff;
+      font-family: Spartan;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 25px; /* 208.333% */
+      letter-spacing: 2.571px;
+      text-transform: uppercase;
+      opacity: 1;
+    }
   }
 `;
 const Overview = styled.div<{ state: string; color: string | undefined }>`
@@ -294,6 +374,17 @@ const Overview = styled.div<{ state: string; color: string | undefined }>`
     line-height: 25px; /* 277.778% */
     letter-spacing: 1.929px;
     text-transform: uppercase;
+    @media (min-width: 90rem) {
+      color: #fff;
+      font-family: Spartan;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 25px;
+      letter-spacing: 2.571px;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
   }
   & p {
     color: #fff;
@@ -306,6 +397,17 @@ const Overview = styled.div<{ state: string; color: string | undefined }>`
     letter-spacing: 1.929px;
     text-transform: uppercase;
     opacity: ${(porps) => (porps.state.includes("overview") ? "1" : "0.5")};
+    @media (min-width: 90rem) {
+      color: #fff;
+      font-family: Spartan;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 25px; /* 208.333% */
+      letter-spacing: 2.571px;
+      text-transform: uppercase;
+      opacity: 1;
+    }
   }
 `;
 const OverviewStructureSurface = styled.div`
@@ -320,6 +422,10 @@ const OverviewStructureSurface = styled.div`
     grid-column: 2/3;
     grid-row: 3/4;
   }
+  @media (min-width: 90rem) {
+    grid-column: 3/4;
+    grid-row: 5/8;
+  }
 `;
 const MiddleMainCon = styled.div`
   display: flex;
@@ -332,12 +438,27 @@ const MiddleMainCon = styled.div`
     grid-template-rows: 1fr 1fr 0.6fr 0.2fr;
     grid-column-gap: 6.9rem;
   }
+  @media (min-width: 90rem) {
+    grid-template-columns: 1fr 0.5fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
 `;
 const Parent = styled.div`
-  height: 100vh;
   padding: 2rem 2.4rem 4.7rem;
   background: #070724;
   @media (min-width: 48rem) {
     padding: 0 4rem 3.6rem 3.9rem;
+    max-width: 100rem;
+    margin-left: auto;
+    margin-right: auto;
   }
+  @media (min-width: 90rem) {
+    max-width: 160rem;
+    padding: 12rem 16rem 5rem 16.5rem;
+  }
+`;
+const Back = styled.div`
+  min-height: 100vh;
+  width: 100%;
+  background: #070724;
 `;

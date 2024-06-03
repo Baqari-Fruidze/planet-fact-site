@@ -1,10 +1,8 @@
 import React from "react";
 import arrowRight from "/assets/icon-chevron.svg";
 import burger from "/assets/icon-hamburger.svg";
-import source from "/assets/icon-source.svg";
 import styled from "styled-components";
 import data from "../data.json";
-import { Tdata } from "../types/Typed";
 import { useMediaQuery } from "@uidotdev/usehooks";
 import { Link } from "react-router-dom";
 import TabletAndDesktopHeader from "./TabletAndDesktopHeader";
@@ -22,28 +20,30 @@ export default function Header({
     "only screen and (min-width : 48rem)"
   );
   return (
-    <BurgerMain>
-      <Head>
-        <HOne>THE PLANETS</HOne>
-        {BurgerToHide ? (
-          <img src={burger} alt="" onClick={() => setShow(!show)} />
+    <Backk>
+      <BurgerMain>
+        <Head>
+          <HOne>THE PLANETS</HOne>
+          {BurgerToHide ? (
+            <img src={burger} alt="" onClick={() => setShow(!show)} />
+          ) : null}
+        </Head>
+        {show ? (
+          <Planets>
+            {data.map((el) => (
+              <Planet name={el.name}>
+                <CircelAndPlanetNameCon onClick={() => setShow(!show)}>
+                  <Circle name={el.name}></Circle>
+                  <Link to={`/${el.name.toLowerCase()}`}>{el.name}</Link>
+                </CircelAndPlanetNameCon>
+                {ArrowToHide ? <img src={arrowRight} alt="" /> : null}
+              </Planet>
+            ))}
+          </Planets>
         ) : null}
-      </Head>
-      {show ? (
-        <Planets>
-          {data.map((el) => (
-            <Planet name={el.name}>
-              <CircelAndPlanetNameCon onClick={() => setShow(!show)}>
-                <Circle name={el.name}></Circle>
-                <Link to={`/${el.name.toLowerCase()}`}>{el.name}</Link>
-              </CircelAndPlanetNameCon>
-              {ArrowToHide ? <img src={arrowRight} alt="" /> : null}
-            </Planet>
-          ))}
-        </Planets>
-      ) : null}
-      {BurgerTabletAndDesktop ? <TabletAndDesktopHeader /> : null}
-    </BurgerMain>
+        {BurgerTabletAndDesktop ? <TabletAndDesktopHeader /> : null}
+      </BurgerMain>
+    </Backk>
   );
 }
 const CircelAndPlanetNameCon = styled.div`
@@ -118,6 +118,10 @@ const Head = styled.div`
     justify-content: center;
     padding-bottom: 3.9rem;
   }
+  @media (min-width: 90rem) {
+    padding-bottom: 0.5rem;
+    align-items: center;
+  }
 `;
 const BurgerMain = styled.div`
   width: 100%;
@@ -125,5 +129,18 @@ const BurgerMain = styled.div`
   padding: 1.6rem 2.4rem 1.75rem;
   @media (min-width: 48rem) {
     padding: 3.2rem 5.3rem 2.7rem;
+    max-width: 100rem;
+    margin: 0 auto;
   }
+  @media (min-width: 90rem) {
+    padding: 2.2rem 4.1rem 1.7rem 3.2rem;
+    display: flex;
+    justify-content: space-between;
+    max-width: none;
+    border-bottom: 1px solid grey;
+  }
+`;
+const Backk = styled.div`
+  width: 100%;
+  background: rgba(7, 7, 36, 1);
 `;

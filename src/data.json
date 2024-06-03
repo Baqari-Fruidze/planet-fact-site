@@ -63,6 +63,9 @@
       },
       "tablet": {
         "bottom": "-40%"
+      },
+      "desktop": {
+        "bottom": "1%"
       }
     }
   },
@@ -130,6 +133,9 @@
       },
       "tablet": {
         "bottom": "-20%"
+      },
+      "desktop": {
+        "bottom": "-1%"
       }
     }
   },
@@ -197,6 +203,9 @@
       },
       "tablet": {
         "bottom": "-20%"
+      },
+      "desktop": {
+        "bottom": "6%"
       }
     }
   },
@@ -264,6 +273,9 @@
       },
       "tablet": {
         "bottom": "-30%"
+      },
+      "desktop": {
+        "bottom": "2%"
       }
     }
   },
@@ -331,6 +343,9 @@
       },
       "tablet": {
         "bottom": "-10%"
+      },
+      "desktop": {
+        "bottom": "0"
       }
     }
   },
@@ -397,6 +412,9 @@
       },
       "tablet": {
         "bottom": "-2%"
+      },
+      "desktop": {
+        "bottom": "2%"
       }
     }
   },
@@ -463,6 +481,9 @@
       },
       "tablet": {
         "bottom": "-20%"
+      },
+      "desktop": {
+        "bottom": "0"
       }
     }
   },
@@ -530,6 +551,9 @@
       },
       "tablet": {
         "bottom": "-20%"
+      },
+      "desktop": {
+        "bottom": "1%"
       }
     }
   }

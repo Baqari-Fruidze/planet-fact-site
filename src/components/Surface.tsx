@@ -19,7 +19,7 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
             ? finded?.marginTopBottom?.mobile
             : isMediumDevice
             ? finded?.marginTopBottom?.tablet
-            : finded?.marginTopBottom?.desktop
+            : null
         }
       >
         <Image
@@ -46,7 +46,9 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
           position={
             isSmallDevice
               ? finded?.absoluteTop?.mobile
-              : finded?.absoluteTop.tablet
+              : isMediumDevice
+              ? finded?.absoluteTop.tablet
+              : finded?.absoluteTop.desktop
           }
         />
       </ImageContainer>
@@ -62,7 +64,7 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
     </>
   );
 }
-const ImageContainer = styled.div<{ margin: string | undefined }>`
+const ImageContainer = styled.div<{ margin: string | undefined | null }>`
   margin-top: ${(props) => props.margin};
   margin-bottom: ${(props) => props.margin};
   position: relative;
@@ -72,6 +74,10 @@ const ImageContainer = styled.div<{ margin: string | undefined }>`
   @media (min-width: 48rem) {
     grid-column: 1/3;
     grid-row: 1/3;
+  }
+  @media (min-width: 90rem) {
+    grid-column: 1/3;
+    grid-row: 1/9;
   }
 `;
 const ImageCenter = styled.img<{
@@ -85,6 +91,9 @@ const ImageCenter = styled.img<{
   width: ${(props) => props?.sizeSecond?.width};
   height: ${(props) => props?.sizeSecond?.height};
   @media (min-width: 48rem) {
+    bottom: ${(props) => props.position?.bottom};
+  }
+  @media (min-width: 90rem) {
     bottom: ${(props) => props.position?.bottom};
   }
 `;
@@ -101,6 +110,14 @@ const ATag = styled.a`
   font-weight: 700;
   line-height: 25px;
   text-decoration-line: underline;
+  @media (min-width: 90rem) {
+    color: #fff;
+    font-family: Spartan;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px; /* 178.571% */
+  }
 `;
 const Span = styled.span`
   text-align: center;
@@ -128,6 +145,16 @@ const Para = styled.p`
     font-style: normal;
     font-weight: 400;
     line-height: 22px;
+  }
+  @media (min-width: 90rem) {
+    margin-bottom: 2.4rem;
+    color: #fff;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Spartan;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
   }
 `;
 const HOne = styled.h1`
@@ -158,5 +185,10 @@ const InfoCon = styled.div`
   @media (min-width: 48rem) {
     grid-column: 1/2;
     grid-row: 3/5;
+  }
+  @media (min-width: 90rem) {
+    grid-column: 3/4;
+    grid-row: 1/5;
+    margin-bottom: 3rem;
   }
 `;
