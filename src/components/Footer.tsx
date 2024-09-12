@@ -1,7 +1,5 @@
-import React from "react";
 import styled from "styled-components";
 import { Tdata } from "../types/Type";
-
 export default function Footer({ finded }: { finded: Tdata | undefined }) {
   return (
     <Foot>

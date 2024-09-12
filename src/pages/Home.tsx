@@ -13,7 +13,6 @@ import Surface from "../components/Surface";
 
 export default function Home({
   show,
-  setShow,
 }: {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;

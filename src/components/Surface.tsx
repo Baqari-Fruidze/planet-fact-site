@@ -1,4 +1,3 @@
-import React from "react";
 import { Tdata } from "../types/Type";
 import styled from "styled-components";
 import { useMediaQuery } from "@uidotdev/usehooks";
@@ -10,7 +9,6 @@ export default function Structure({ finded }: { finded: Tdata | undefined }) {
     "only screen and (min-width : 48rem) and (max-width : 90rem)"
   );
   const isSmallDevice = useMediaQuery("only screen and (max-width : 767px)");
-  const isLargeDevice = useMediaQuery("only screen (min-width : 1441px)");
   return (
     <>
       <ImageContainer
